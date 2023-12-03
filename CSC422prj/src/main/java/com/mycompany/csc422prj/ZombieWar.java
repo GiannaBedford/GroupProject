@@ -75,23 +75,17 @@ public class ZombieWar {
             }
         }
 
-        System.out.println("The survivors have won! All zombies have been killed.");
-        System.out.println("You started with " + this.numSurvivors + " survivors and " + this.numZombies + "zombies.");
-        System.out.println(remainingSurvivors + " survivors made it.");
+        System.out.println("We have " + this.numSurvivors + " survivors trying to make it to safety.");
+        System.out.println("But there are " + this.numZombies + " zombies waiting for them.");
+        displayStats();
+        System.out.println("It seems " + remainingSurvivors + " have made it to safety");
     }
 
     public void lose() {
-        int remainingZombies = 0;
-
-        for(int i = 0; i < this.numZombies; i++) {
-            if(!this.zombieList.get(i).isDead()) {
-                remainingZombies++;
-            }
-        }
-
-        System.out.println("The survivors have lost. All survivors have been killed.");
-        System.out.println("You started with " + this.numSurvivors + " survivors and " + this.numZombies + "zombies.");
-        System.out.println(remainingZombies + " zombies are left.");
+        System.out.println("We have " + this.numSurvivors + " survivors trying to make it to safety.");
+        System.out.println("But there are " + this.numZombies + " zombies waiting for them.");
+        displayStats();
+        System.out.println("None of the survivors made it.");
     }
 
     private void addCommonInfect() {
