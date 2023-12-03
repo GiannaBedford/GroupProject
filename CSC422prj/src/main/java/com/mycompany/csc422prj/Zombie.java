@@ -8,14 +8,48 @@ package com.mycompany.csc422prj;
  *
  * @author Kristin
  */
-public class Zombie {
+public class Zombie extends Character{
+    private String commonInfect;
+    private String tank;
 
-    boolean isDead() {
+    public Zombie() {
+        this.commonInfect = "CommonInfect";
+        this.tank = "Tank";
+    }
+
+    public void setZombieClass(String commonInfect, String tank) {
+        this.commonInfect = commonInfect;
+        this.tank = tank;
+    }
+
+    public ZombieInfo getZombieInfo() {
+        return new ZombieInfo(commonInfect, tank);
+    }
+        boolean isDead() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+    
 
     void takeDamage(int damage) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
+
+    // Other methods and members of the Zombie class
+}
+class ZombieInfo {
+    private String commonInfect;
+    private String tank;
+
+    public ZombieInfo(String commonInfect, String tank) {
+        this.commonInfect = commonInfect;
+        this.tank = tank;
+    }
+
+    public String getCommonInfect() {
+        return commonInfect;
+    }
+
+    public String getTank() {
+        return tank;
+    }
 }

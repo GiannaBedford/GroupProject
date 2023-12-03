@@ -8,8 +8,26 @@ package com.mycompany.csc422prj;
  *
  * @author Kristin
  */
-public class Survivor {
+public class Survivor extends Character{
+    private String child;
+    private String soldier;
+    private String teacher;
 
+    public Survivor() {
+        this.child = "Child";
+        this.soldier = "Soldier";
+        this.teacher = "Teacher";
+    }
+
+    public void setSurvivorClass(String child, String soldier, String teacher) {
+        this.child = child;
+        this.soldier = soldier;
+        this.teacher = teacher;
+    }
+
+    public SurvivorInfo getSurvivorInfo() {
+        return new SurvivorInfo(child, soldier, teacher);
+    }
     boolean isDead() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
@@ -17,5 +35,28 @@ public class Survivor {
     void takeDamage(int damage) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
+}
+
+class SurvivorInfo {
+    private String child;
+    private String soldier;
+    private String teacher;
+
+    public SurvivorInfo(String child, String soldier, String teacher) {
+        this.child = child;
+        this.soldier = soldier;
+        this.teacher = teacher;
+    }
+
+    public String getChild() {
+        return child;
+    }
+
+    public String getSoldier() {
+        return soldier;
+    }
+
+    public String getTeacher() {
+        return teacher;
+    }
 }
