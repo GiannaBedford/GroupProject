@@ -6,7 +6,7 @@ package com.mycompany.csc422prj;
 
 /**
  *
- * @author Kristin
+ * @author Hamze Jama
  */
 public class Zombie extends Character{
     private String commonInfect;
