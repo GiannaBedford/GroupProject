@@ -77,14 +77,14 @@ public class ZombieWar {
 
         System.out.println("We have " + this.numSurvivors + " survivors trying to make it to safety.");
         System.out.println("But there are " + this.numZombies + " zombies waiting for them.");
-        displayStats();
+        //displayStats();
         System.out.println("It seems " + remainingSurvivors + " have made it to safety");
     }
 
     public void lose() {
         System.out.println("We have " + this.numSurvivors + " survivors trying to make it to safety.");
         System.out.println("But there are " + this.numZombies + " zombies waiting for them.");
-        displayStats();
+        //displayStats();
         System.out.println("None of the survivors made it.");
     }
 
