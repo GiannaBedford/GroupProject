@@ -12,6 +12,8 @@ import java.util.*;
 public class ZombieWar {
     private ArrayList<Zombie> zombieList;
     private ArrayList<Survivor> survivorList;
+    private int numSurvivors;
+    private int numZombies;
 
     ZombieWar() {
         this.zombieList = new ArrayList<>();
@@ -20,14 +22,44 @@ public class ZombieWar {
 
     public void createCharacters() {
         Random rand = new Random();
-        int numSurvivors = rand.nextInt(20) + 1;
-        int numZombies = rand.nextInt(20) + 1;
+        this.numSurvivors = rand.nextInt(20) + 1;
+        this.numZombies = rand.nextInt(20) + 1;
 
-        
+        for(int i = 0; i < this.numSurvivors; i++) {
+            int survivorType = rand.nextInt(3);
+
+            if(survivorType == 0) {
+                addChild();
+            } else if(survivorType == 1) {
+                addTeacher();
+            } else {
+                addSoldier();
+            }
+        }
+
+        for(int j = 0; j < this.numZombies; j++) {
+            int zombieType = rand.nextInt(2);
+
+            if(zombieType == 0) {
+                addCommonInfect();
+            } else {
+                addTank();
+            }
+        }
     }
 
     public void fight() {
+        for(int i = 0; i < this.numSurvivors; i++) {
+            for(int j = 0; j < this.numZombies; j++) {
+                this.survivorList.get(i).attack(this.zombieList.get(j));
+            }
+        }
 
+        for(int k = 0; k < this.numZombies; k++) {
+            for(int r = 0; r < this.numSurvivors; r++) {
+                this.zombieList.get(k).attack(this.survivorList.get(r));
+            }
+        }
     }
 
     public void displayStats() {

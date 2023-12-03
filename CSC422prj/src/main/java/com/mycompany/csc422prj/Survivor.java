@@ -8,7 +8,7 @@ package com.mycompany.csc422prj;
  *
  * @author Hamze Jama
  */
-public class Survivor extends Character{
+public abstract class Survivor extends Character{
     private String child;
     private String soldier;
     private String teacher;
@@ -35,6 +35,8 @@ public class Survivor extends Character{
     void takeDamage(int damage) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
+    abstract void attack(Zombie target);
 }
 
 class SurvivorInfo {
