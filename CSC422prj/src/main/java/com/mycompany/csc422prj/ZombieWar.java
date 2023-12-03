@@ -67,11 +67,31 @@ public class ZombieWar {
     }
 
     public void win() {
+        int remainingSurvivors = 0;
 
+        for(int i = 0; i < this.numSurvivors; i++) {
+            if(!this.survivorList.get(i).isDead()) {
+                remainingSurvivors++;
+            }
+        }
+
+        System.out.println("The survivors have won! All zombies have been killed.");
+        System.out.println("You started with " + this.numSurvivors + " survivors and " + this.numZombies + "zombies.");
+        System.out.println(remainingSurvivors + " survivors made it.");
     }
 
     public void lose() {
+        int remainingZombies = 0;
 
+        for(int i = 0; i < this.numZombies; i++) {
+            if(!this.zombieList.get(i).isDead()) {
+                remainingZombies++;
+            }
+        }
+
+        System.out.println("The survivors have lost. All survivors have been killed.");
+        System.out.println("You started with " + this.numSurvivors + " survivors and " + this.numZombies + "zombies.");
+        System.out.println(remainingZombies + " zombies are left.");
     }
 
     private void addCommonInfect() {
