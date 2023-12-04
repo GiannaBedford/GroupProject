@@ -62,10 +62,6 @@ public class ZombieWar {
         }
     }
 
-    public void displayStats() {
-
-    }
-
     public void win() {
         int remainingSurvivors = 0;
 
@@ -117,4 +113,62 @@ public class ZombieWar {
 
         this.survivorList.add(teacher);
     }
+    public static void main(String[] args) {
+        // Release 1.0's sample run
+        getRelease1_0();
+    }
+    private static void getRelease1_0() {
+        int totalSurvivors = 17;
+        int totalZombies = 8;
+
+        // Create survivors
+        Survivor[] survivors = new Survivor[totalSurvivors];
+        for (int i = 0; i < totalSurvivors; i++) {
+            if (i < 5) {
+                survivors[i] = new Child("Child" + (i + 1));
+            } else if (i < 12) {
+                survivors[i] = new Teacher("Teacher" + (i - 4));
+            } else {
+                survivors[i] = new Soldier("Soldier" + (i - 11));
+            }
+        }
+        // Create zombies
+        Zombie[] zombies = new Zombie[totalZombies];
+        for (int i = 0; i < totalZombies; i++) {
+            if (i % 2 == 0) {
+                zombies[i] = new CommonInfected();
+            } else {
+                zombies[i] = new Tank();
+            }
+        }
+
+        // escape
+        for (Survivor survivor : survivors) {
+            for (Zombie zombie : zombies) {
+                if (zombie instanceof Tank) {
+                    continue;
+                }
+                if (Math.random() < 0.7) {
+                    survivor.makeItToSafety();
+                    break;
+                }
+            }
+        }
+        // Count the survivors who made it to safety
+        int survivorsMadeIt = 0;
+        for (Survivor survivor : survivors) {
+            if (survivor.hasMadeItToSafety()) {
+                survivorsMadeIt++;
+            }
+        }
+        // Display stats
+        displayStats(totalSurvivors, totalZombies, survivorsMadeIt);
+    }
+
+    private static void displayStats(int totalSurvivors, int totalZombies, int survivorsMadeIt) {
+        System.out.println("We have " + totalSurvivors + " survivors trying to make it to safety.");
+        System.out.println("But there are " + totalZombies + " zombies waiting for them.");
+        System.out.println("It seems " + survivorsMadeIt + " have made it to safety.");
+    }
+}
 }
