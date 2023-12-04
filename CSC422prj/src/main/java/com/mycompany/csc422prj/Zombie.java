@@ -30,11 +30,13 @@ public abstract class Zombie extends Character{
     }
     
 
-    void takeDamage(int damage) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+    abstract void takeDamage(int damage);
 
     abstract void attack(Survivor target);
+
+    abstract int getHealth();
+
+    abstract void setDead(boolean dead);
 
     // Other methods and members of the Zombie class
 }

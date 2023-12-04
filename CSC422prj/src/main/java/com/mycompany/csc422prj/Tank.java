@@ -12,7 +12,7 @@ public class Tank extends Zombie
 {
     private int health;
     private int damage;
-    private boolean dead;
+    public boolean dead;
 
     public Tank() 
     {
@@ -28,22 +28,25 @@ public class Tank extends Zombie
         {
             survivor.takeDamage(getDamage());
         }
+
+        if(survivor.getHealth() <= 0) {
+            survivor.setDead(true);
+        }
     }
 
     public int getHealth() 
     {
-        return health;
+        return this.health;
     }
 
     public int getDamage() 
     {
-        return damage;
+        return this.damage;
     }
 
     public boolean isDead() 
     {
-        dead = true;
-        return dead;
+        return this.dead;
     }
 
     public void setHealth(int health) 
@@ -54,5 +57,13 @@ public class Tank extends Zombie
     public void setDamage(int damage) 
     {
         this.damage = damage;
+    }
+
+    public void setDead(boolean dead) {
+        this.dead = dead;
+    }
+
+    public void takeDamage(int damage) {
+        this.health -= damage;
     }
 }

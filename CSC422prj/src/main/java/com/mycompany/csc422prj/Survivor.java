@@ -32,11 +32,13 @@ public abstract class Survivor extends Character{
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    void takeDamage(int damage) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+    abstract void takeDamage(int damage);
 
     abstract void attack(Zombie target);
+
+    abstract int getHealth();
+
+    abstract void setDead(boolean dead);
 }
 
 class SurvivorInfo {

@@ -7,7 +7,7 @@ import java.util.*;
 
 /**
  *
- * @author Kristin
+ * @author Olivia Cole
  */
 public class ZombieWar {
     private ArrayList<Zombie> zombieList;
@@ -113,10 +113,12 @@ public class ZombieWar {
 
         this.survivorList.add(teacher);
     }
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         // Release 1.0's sample run
         getRelease1_0();
-    }
+    } */
+
+    /*
     private static void getRelease1_0() {
         int totalSurvivors = 17;
         int totalZombies = 8;
@@ -163,12 +165,38 @@ public class ZombieWar {
         }
         // Display stats
         displayStats(totalSurvivors, totalZombies, survivorsMadeIt);
-    }
+    } */
 
     private static void displayStats(int totalSurvivors, int totalZombies, int survivorsMadeIt) {
         System.out.println("We have " + totalSurvivors + " survivors trying to make it to safety.");
         System.out.println("But there are " + totalZombies + " zombies waiting for them.");
         System.out.println("It seems " + survivorsMadeIt + " have made it to safety.");
     }
-}
+
+    public int checkWin() {
+        boolean survivorsLeft = false;
+        boolean zombiesLeft = false;
+
+        for(int i = 0; i < this.numSurvivors; i++) {
+            if(!this.survivorList.get(i).isDead()) {
+                survivorsLeft = true;
+            }
+        }
+
+        for(int i = 0; i < this.numZombies; i++) {
+            if(!this.zombieList.get(i).isDead()) {
+                zombiesLeft = true;
+            }
+        }
+        System.out.println(zombiesLeft);
+        System.out.println(survivorsLeft);
+
+        if(zombiesLeft && survivorsLeft) {
+            return 1;
+        } else if(survivorsLeft && !zombiesLeft) {
+            return 2;
+        } else {
+            return 3;
+        }
+    }
 }

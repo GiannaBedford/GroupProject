@@ -6,11 +6,28 @@ package com.mycompany.csc422prj;
 
 /**
  *
- * @author Kristin
+ * @author Olivia Cole
  */
 public class CSC422prj {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        ZombieWar game = new ZombieWar();
+
+        game.createCharacters();
+        game.fight();
+
+        int status = game.checkWin();
+
+        while(status == 1) {
+            game.fight();
+            status = game.checkWin();
+        }
+        System.out.println(status);
+
+        if(status == 2) {
+            game.win();
+        } else {
+            game.lose();
+        }
     }
 }
