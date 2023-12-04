@@ -12,8 +12,13 @@ import java.util.*;
 public class ZombieWar {
     private ArrayList<Zombie> zombieList;
     private ArrayList<Survivor> survivorList;
-    private int numSurvivors;
-    private int numZombies;
+    public int numSurvivors;
+    public int numZombies;
+    public int numChildren;
+    public int numTeachers;
+    public int numSoldiers;
+    public int numTanks;
+    public int numCommonInfect;
 
     ZombieWar() {
         this.zombieList = new ArrayList<>();
@@ -24,16 +29,24 @@ public class ZombieWar {
         Random rand = new Random();
         this.numSurvivors = rand.nextInt(20) + 1;
         this.numZombies = rand.nextInt(20) + 1;
+        this.numChildren = 0;
+        this.numCommonInfect = 0;
+        this.numSoldiers = 0;
+        this.numTanks = 0;
+        this.numTeachers = 0;
 
         for(int i = 0; i < this.numSurvivors; i++) {
             int survivorType = rand.nextInt(3);
 
             if(survivorType == 0) {
                 addChild();
+                this.numChildren++;
             } else if(survivorType == 1) {
                 addTeacher();
+                this.numTeachers++;
             } else {
                 addSoldier();
+                this.numSoldiers++;
             }
         }
 
@@ -42,8 +55,10 @@ public class ZombieWar {
 
             if(zombieType == 0) {
                 addCommonInfect();
+                this.numCommonInfect++;
             } else {
                 addTank();
+                this.numTanks++;
             }
         }
     }
@@ -71,15 +86,11 @@ public class ZombieWar {
             }
         }
 
-        System.out.println("We have " + this.numSurvivors + " survivors trying to make it to safety.");
-        System.out.println("But there are " + this.numZombies + " zombies waiting for them.");
         //displayStats();
         System.out.println("It seems " + remainingSurvivors + " have made it to safety");
     }
 
     public void lose() {
-        System.out.println("We have " + this.numSurvivors + " survivors trying to make it to safety.");
-        System.out.println("But there are " + this.numZombies + " zombies waiting for them.");
         //displayStats();
         System.out.println("None of the survivors made it.");
     }
@@ -188,8 +199,8 @@ public class ZombieWar {
                 zombiesLeft = true;
             }
         }
-        System.out.println(zombiesLeft);
-        System.out.println(survivorsLeft);
+        //System.out.println(zombiesLeft);
+        //System.out.println(survivorsLeft);
 
         if(zombiesLeft && survivorsLeft) {
             return 1;
