@@ -38,6 +38,8 @@ public abstract class Zombie extends Character{
 
     abstract void setDead(boolean dead);
 
+    abstract String getType();
+
     // Other methods and members of the Zombie class
 }
 class ZombieInfo {

@@ -31,6 +31,7 @@ public class Soldier extends Survivor
 
         if(zombie.getHealth() <= 0) {
             zombie.setDead(true);
+            System.out.println("    Soldier killed " + zombie.getType());
         }
     }
 
@@ -65,5 +66,9 @@ public class Soldier extends Survivor
 
     public void takeDamage(int damage) {
         this.health -= damage;
+    }
+
+    public String getType() {
+        return "Soldier";
     }
 }

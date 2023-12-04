@@ -14,6 +14,10 @@ public class CSC422prj {
         ZombieWar game = new ZombieWar();
 
         game.createCharacters();
+
+        System.out.println("We have " + game.numSurvivors + " survivors(" + game.numChildren + " children, " + game.numTeachers + " teachers, " + game.numSoldiers + " soldiers) trying to make it to safety.");
+        System.out.println("But there are " + game.numZombies + " zombies(" + game.numCommonInfect + " common infect, " + game.numTanks + " tank) waiting for them.");
+
         game.fight();
 
         int status = game.checkWin();
@@ -22,7 +26,7 @@ public class CSC422prj {
             game.fight();
             status = game.checkWin();
         }
-        System.out.println(status);
+        //System.out.println(status);
 
         if(status == 2) {
             game.win();

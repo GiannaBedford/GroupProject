@@ -39,6 +39,8 @@ public abstract class Survivor extends Character{
     abstract int getHealth();
 
     abstract void setDead(boolean dead);
+
+    abstract String getType();
 }
 
 class SurvivorInfo {

@@ -31,6 +31,7 @@ public class CommonInfect extends Zombie
 
         if(survivor.getHealth() <= 0) {
             survivor.setDead(true);
+            System.out.println("    Common Infect killed " + survivor.getType());
         }
     }
 
@@ -65,5 +66,9 @@ public class CommonInfect extends Zombie
 
     public void takeDamage(int damage) {
         this.health -= damage;
+    }
+
+    public String getType() {
+        return "Common Infect";
     }
 }
