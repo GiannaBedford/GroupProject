@@ -1,4 +1,4 @@
-package zwar;
+package com.mycompany.csc422prj;
 
 public abstract class Weapon {
 
