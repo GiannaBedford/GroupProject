@@ -14,6 +14,7 @@ public class Teacher extends Survivor
     private int health;
     private int damage;
     public boolean dead;
+    private Weapon chosenWeapon;
 
     public Teacher() 
     {
@@ -36,30 +37,35 @@ public class Teacher extends Survivor
         };
 
         Random random = new Random();
-        Weapon chosenWeapon = availableWeapons[random.nextInt(availableWeapons.length)];
+        this.chosenWeapon = availableWeapons[random.nextInt(availableWeapons.length)];
 
-        System.out.println(chosenWeapon.getName() + " has chosen the weapon: " + chosenWeapon.getName());
-        System.out.println("Damage: " + chosenWeapon.getAttack());
-        System.out.println("Accuracy: " + chosenWeapon.getAccuracy());
-        if (chosenWeapon instanceof RangedWeapon rangedWeapon)
+        System.out.println(this.chosenWeapon.getName() + " has chosen the weapon: " + this.chosenWeapon.getName());
+        System.out.println("Damage: " + this.chosenWeapon.getAttack());
+        System.out.println("Accuracy: " + this.chosenWeapon.getAccuracy());
+        if (this.chosenWeapon instanceof RangedWeapon rangedWeapon)
         {
             System.out.println("Num Projectiles: " + rangedWeapon.getNumProjectiles());
         }
-        System.out.println("Kill Action: " + chosenWeapon.getKillAction());
+        System.out.println("Kill Action: " + this.chosenWeapon.getKillAction());
     }
 
 
     public void attack(Zombie target) 
     {
+        Random random = new Random();
+        int hitNum = random.nextInt(10) + 1;
         Zombie zombie = (Zombie) target;
+
         if (!isDead() && !zombie.isDead()) 
         {
-            zombie.takeDamage(getDamage());
+            if(hitNum <= this.chosenWeapon.getAccuracy()) {
+                zombie.takeDamage(this.chosenWeapon.getAttack());
+            }
         }
 
         if(zombie.getHealth() <= 0) {
             zombie.setDead(true);
-            System.out.println("    Teacher killed " + zombie.getType());
+            System.out.println("    Teacher killed " + zombie.getType() + " with " + this.chosenWeapon.getName());
         }
     }
 
