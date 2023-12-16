@@ -21,6 +21,7 @@ public class Teacher extends Survivor
         this.health = 50;
         this.damage = 5;
         this.dead = false;
+        //this.chosenWeapon = new MeleeWeapon("Default Melee Weapon", 10, 0.5, "Swing");
     }
 
     public void chooseWeapon()
@@ -50,22 +51,28 @@ public class Teacher extends Survivor
     }
 
 
-    public void attack(Zombie target) 
-    {
+ @Override
+    public void attack(Zombie target) {
+          if (isDead()) {
+            return; // Skip attacking if the soldier is already dead
+        }
+          if (this.chosenWeapon == null) {
+            chooseWeapon();
+        }
         Random random = new Random();
         int hitNum = random.nextInt(10) + 1;
         Zombie zombie = (Zombie) target;
 
-        if (!isDead() && !zombie.isDead()) 
-        {
-            if(hitNum <= this.chosenWeapon.getAccuracy()) {
+        
+            if (!zombie.isDead() && hitNum <= this.chosenWeapon.getAccuracy()) {
                 zombie.takeDamage(this.chosenWeapon.getAttack());
+                System.out.println("    Teacher attacked " + zombie.getType());
             }
-        }
+        
 
         if(zombie.getHealth() <= 0) {
             zombie.setDead(true);
-            System.out.println("    Teacher killed " + zombie.getType() + " with " + this.chosenWeapon.getName());
+            System.out.println("    Teacher killed " + zombie.getType());
         }
     }
 

@@ -49,19 +49,24 @@ public class Soldier extends Survivor
         System.out.println("Kill Action: " + this.chosenWeapon.getKillAction());
     }
 
-
-    public void attack(Zombie target) 
-    {
+    @Override
+    public void attack(Zombie target) {
+          if (isDead()) {
+            return; 
+        }
+          if (this.chosenWeapon == null) {
+            chooseWeapon();
+        }
         Random random = new Random();
         int hitNum = random.nextInt(10) + 1;
         Zombie zombie = (Zombie) target;
 
-        if (!isDead() && !zombie.isDead()) 
-        {
-            if(hitNum <= this.chosenWeapon.getAccuracy()) {
+        
+            if (!zombie.isDead() && hitNum <= this.chosenWeapon.getAccuracy()) {
                 zombie.takeDamage(this.chosenWeapon.getAttack());
+                System.out.println("    Soldier attacked " + zombie.getType());
             }
-        }
+        
 
         if(zombie.getHealth() <= 0) {
             zombie.setDead(true);

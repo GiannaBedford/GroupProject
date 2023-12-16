@@ -20,18 +20,20 @@ public class CommonInfect extends Zombie
         this.damage = 5;
         this.dead = false;
     }
-
-    public void attack(Survivor target) 
-    {
-        Survivor survivor = (Survivor) target;
-        if (!isDead() && !survivor.isDead()) 
-        {
-            survivor.takeDamage(getDamage());
+    
+    @Override
+    public void attack(Survivor target) {
+        if (target.isDead()) {
+            return; // Skip attacking if the target is already dead
         }
 
-        if(survivor.getHealth() <= 0) {
-            survivor.setDead(true);
-            System.out.println("    Common Infect killed " + survivor.getType());
+        if (!isDead()) {
+            target.takeDamage(getDamage());
+        }
+
+        if (target.getHealth() <= 0) {
+            target.setDead(true);
+            System.out.println("    Common Infect killed " + target.getType());
         }
     }
 

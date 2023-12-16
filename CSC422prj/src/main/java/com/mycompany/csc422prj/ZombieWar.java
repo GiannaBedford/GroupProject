@@ -188,26 +188,27 @@ public class ZombieWar {
         boolean survivorsLeft = false;
         boolean zombiesLeft = false;
 
-        for(int i = 0; i < this.numSurvivors; i++) {
-            if(!this.survivorList.get(i).isDead()) {
+        for (Survivor survivor : this.survivorList) {
+            if (!survivor.isDead()) {
                 survivorsLeft = true;
+                break; 
             }
         }
 
-        for(int i = 0; i < this.numZombies; i++) {
-            if(!this.zombieList.get(i).isDead()) {
+        for (Zombie zombie : this.zombieList) {
+            if (!zombie.isDead()) {
                 zombiesLeft = true;
+                break; 
             }
         }
-        //System.out.println(zombiesLeft);
-        //System.out.println(survivorsLeft);
 
-        if(zombiesLeft && survivorsLeft) {
-            return 1;
-        } else if(survivorsLeft && !zombiesLeft) {
-            return 2;
+        if (zombiesLeft && survivorsLeft) {
+            return 1; // Battle still ongoing
+        } else if (survivorsLeft && !zombiesLeft) {
+            return 2; // Survivors win
         } else {
-            return 3;
+            return 3; // Zombies win
         }
     }
-}
+    }
+
