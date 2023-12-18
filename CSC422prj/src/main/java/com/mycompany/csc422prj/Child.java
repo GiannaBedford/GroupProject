@@ -40,7 +40,7 @@ public class Child extends Survivor
         Random random = new Random();
         this.chosenWeapon = availableWeapons[random.nextInt(availableWeapons.length)];
 
-        System.out.println(this.chosenWeapon.getName() + " has chosen the weapon: " + this.chosenWeapon.getName());
+        System.out.println("Child has chosen the weapon: " + this.chosenWeapon.getName());
         System.out.println("Damage: " + this.chosenWeapon.getAttack());
         System.out.println("Accuracy: " + this.chosenWeapon.getAccuracy());
         if (this.chosenWeapon instanceof RangedWeapon rangedWeapon)
